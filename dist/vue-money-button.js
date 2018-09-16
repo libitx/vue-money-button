@@ -1,6 +1,6 @@
 /*!
  * vue-money-button v0.0.1 (http://github.com/libitx)
- * An unofficial Vue.js component for the MoneyButton.
+ * An unofficial Vue.js component for Money Button.
  * (c) 2018 libitx
  * Released under the MIT License.
  */
