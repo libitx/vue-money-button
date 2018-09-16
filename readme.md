@@ -1,8 +1,8 @@
 # vue-money-button
 
-> An unofficial Vue.js component for the MoneyButton.
+> An unofficial Vue.js component for the Money Button.
 
-The official [MoneyButton](https://www.moneybutton.com/) `moneybutton.js` script is only suitable for basic usage on static web pages. This library allows the MoneyButton to be used in Vue.js projects and benefit from reactive properties.
+The official [Money Button](https://www.moneybutton.com/) `moneybutton.js` script is only suitable for basic usage on static web pages. This library allows Money Button to be used in Vue.js projects and benefit from reactive properties.
 
 ## Demo
 
@@ -25,7 +25,6 @@ npm install vue-money-button --save
       currency="USD"
       label="$1 Tip me"
       type="tip"
-
       @payment="handlePayment"
     />
   </div>
@@ -54,10 +53,10 @@ The following properties can be set on the component:
 
 | Prop         | Type                      | Required           | Default |
 |--------------|---------------------------|--------------------|---------|
-| `to`         | `String`                  | :white_check_mark: | `null`  |
-| `amount`     | `String` or `Number`      | :white_check_mark: | `null`  |
+| `to`         | `String`                  | :heavy_check_mark: | `null`  |
+| `amount`     | `String` or `Number`      | :heavy_check_mark: | `null`  |
 | `currency`   | `String`                  |                    | `USD`   |
-| `label`      | `String`                  | :white_check_mark: | `null`  |
+| `label`      | `String`                  | :heavy_check_mark: | `null`  |
 | `hideAmount` | `Boolean`                 |                    | `false` |
 | `opReturn`   | `String`                  |                    | `null`  |
 | `outputs`    | `String` (Stringified JSON) |                  | `[]`    |

@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <h1>Vue.js Unofficial MoneyButton Component</h1>
+    <h1>Vue.js Money Button Component Demo</h1>
 
-    <p>A simple Vue.js component for rendering MoneyButton. Any of the properties can be changed dynamically, causing a reload of the MoneyButton iframe.</p>
+    <p>An unofficial Vue.js component for the Money Button. This library allows Money Button to be used in Vue.js projects and benefit from reactive properties.</p>
 
     <h3>Demo</h3>
 
@@ -24,13 +24,14 @@
     <MoneyButton
       to="74"
       :amount="amount"
-      :label="label"
-      clientIdentifier="eaca95f6eca089c4029ca9d3e0c3e86b"
-      buttonId="1537033178492"
+      :label="tipLabel"
+      type="tip"
 
       @payment="onPayment"
       @error="onError"
     />
+
+    <p><em>Disclaimer: This is a real Money Button. Sliding it will send me money.</em></p>
 
     <h3>Example</h3>
 
@@ -50,6 +51,14 @@
   @payment="onPayment"  // event handler
   @error="onError"      // event handler
 /&#62;</code></pre>
+
+    <h3>Find out more</h3>
+
+    <ul>
+      <li><a href="https://github.com/libitx/vue-money-button">Source code</a></li>
+      <li><a href="https://www.moneybutton.com/">Money Button website</a></li>
+      <li><a href="https://docs.moneybutton.com/">Money Button docs</a></li>
+    </ul>
   </div>
 </template>
 
@@ -59,8 +68,14 @@ import MoneyButton from 'components/MoneyButton.vue'
 export default {
   data() {
     return {
-      amount: '0.5',
-      label: 'Buy me'
+      amount: '1',
+      label: 'Tip Libby'
+    }
+  },
+
+  computed: {
+    tipLabel() {
+      return `$${ this.amount } ${ this.label }`;
     }
   },
 
@@ -92,6 +107,21 @@ h3 {
 
 p {
   margin: 16px 0;
+}
+
+ul {
+  padding-left: 0;
+  line-height: 1.5em;
+  list-style-position: inside;
+}
+
+a {
+  color: #357EDD;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #E7040F;
 }
 
 form {
