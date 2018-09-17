@@ -8,7 +8,8 @@
     "build:demo": "NODE_ENV=production webpack --config ./config/dev.js --mode production",
     "build:dist": "NODE_ENV=production webpack --config ./config/dist.js --mode production",
     "clean": "rimraf ./dist/* ./demo/*",
-    "dev": "NODE_ENV=development webpack-dev-server --config ./config/dev.js --inline --hot --mode development"
+    "dev": "NODE_ENV=development webpack-dev-server --config ./config/dev.js --inline --hot --mode development",
+    "release:demo": "git subtree push --prefix demo origin gh-pages"
   },
   "license": "MIT",
   "devDependencies": {
