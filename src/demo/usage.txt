@@ -1,0 +1,28 @@
+<template>
+  <div>
+    <MoneyButton
+      to="74"
+      amount="1"
+      currency="USD"
+      label="$1 Tip me"
+      type="tip"
+      @payment="handlePayment"
+    />
+  </div>
+</template>
+
+<script>
+import MoneyButton from 'vue-money-button'
+
+export default {
+  components: {
+    MoneyButton
+  },
+
+  methods: {
+    handlePayment(payment) {
+      // handle payment
+    }
+  }
+}
+</script>

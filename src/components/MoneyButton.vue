@@ -1,11 +1,11 @@
 <template>
   <div class="button-wrap" :style="size">
     <Popover
-      v-if="error"
-      :title="error.title"
-      :text="error.text"
-      :buttons="error.buttons"
-      @close="error = null"
+      v-if="hint"
+      :title="hint.title"
+      :text="hint.text"
+      :buttons="hint.buttons"
+      @close="hint = null"
     />
     <iframe :src="url" class="button-frame" :style="size" scrolling="no" v-message-handler />
     <Spinner />
@@ -37,7 +37,7 @@ export default {
 
   data() {
     return {
-      error: null,
+      hint: null,
       size: {
         width: '280px',
         height: '50px'
@@ -72,7 +72,7 @@ export default {
     handleError(error) {
       switch(error) {
         case 'insufficient balance':
-          return this.error = {
+          return this.hint = {
             title: 'Low balance',
             text: 'You do not have enough money.',
             buttons: [
@@ -80,7 +80,7 @@ export default {
             ]
           };
         case 'not logged in':
-          return this.error = {
+          return this.hint = {
             title: 'Login',
             text: 'Please login.',
             buttons: [
@@ -89,7 +89,7 @@ export default {
             ]
           };
         default:
-          return this.error = {
+          return this.hint = {
             title: 'Unknown Error',
             text: error
           };

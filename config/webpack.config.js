@@ -5,6 +5,7 @@ const UglifyJsPlugin  = require('uglifyjs-webpack-plugin')
 const opts  = require('./options')
 const babel = require('./loaders/babel')
 const css   = require('./loaders/css')
+const raw   = require('./loaders/raw')
 const vue   = require('./loaders/vue')
 
 const config = {
@@ -12,6 +13,7 @@ const config = {
     rules: [
       babel,
       css,
+      raw,
       vue
     ]
   },
