@@ -22,17 +22,17 @@ export default {
   domain: 'https://www.moneybutton.com',
 
   props: {
-    to:               { type: String, required: true },
-    amount:           { required: true },
+    to:               [String, Number],
+    amount:           [String, Number],
     currency:         { type: String, default: 'USD' },
     label:            { type: String, required: true },
     hideAmount:       { type: Boolean, default: false },
-    opReturn:         { type: String },
-    dataOutputs:      { type: String, default: '[]' },
-    clientIdentifier: { type: String },
-    buttonId:         { required: false },
-    buttonData:       { required: false },
-    type:             { type: String, default: 'buy' },
+    opReturn:         String,
+    outputs:          { type: Array, default: () => [] },
+    clientIdentifier: String,
+    buttonId:         true,
+    buttonData:       true,
+    type:             { type: String, default: 'buy' }
   },
 
   data() {
@@ -43,7 +43,6 @@ export default {
         width: '280px',
         height: '50px'
       }
-      
     }
   },
 
@@ -66,7 +65,7 @@ export default {
         lbl:  this.label,
         hamt: this.hideAmount,
         opd:  this.opReturn,
-        os:   this.outputs,
+        os:   this.outputs.length ? JSON.stringify(this.outputs) : undefined,
         cid:  this.clientIdentifier,
         bid:  this.buttonId,
         bdt:  this.buttonData,

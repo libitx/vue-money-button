@@ -41,7 +41,7 @@
 
       <pre class="ph4 pv3 code f6 fw7 lh-copy bg-light-gray dark-pink" v-show="payment">{{ payment }}</pre>
 
-      <p class="mv3 f6 lh-copy mid-gray"><em>Disclaimer: This is a real Money Button. Sliding it will send me money.</em></p>
+      <p class="mv3 f6 lh-copy mid-gray"><em>Disclaimer: This is a real Money Button. Sliding it will send me your money.</em> <span class="f3 v-mid">🤑</span></p>
     </div>
 
     <h3 class="mt4 mb2 ph4 f4 lh-title">Installation</h3>

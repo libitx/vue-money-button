@@ -21,10 +21,9 @@ npm install vue-money-button --save
   <div>
     <MoneyButton
       to="74"
-      amount="1"
+      amount="0.5"
       currency="USD"
-      label="$1 Tip me"
-      type="tip"
+      label="Send Libby some loot"
       @payment="handlePayment"
     />
   </div>
@@ -51,19 +50,30 @@ export default {
 
 The following properties can be set on the component:
 
-| Prop         | Type                      | Required           | Default |
-|--------------|---------------------------|--------------------|---------|
-| `to`         | `String`                  | :heavy_check_mark: | `null`  |
-| `amount`     | `String` or `Number`      | :heavy_check_mark: | `null`  |
-| `currency`   | `String`                  |                    | `USD`   |
-| `label`      | `String`                  | :heavy_check_mark: | `null`  |
-| `hideAmount` | `Boolean`                 |                    | `false` |
-| `opReturn`   | `String`                  |                    | `null`  |
-| `outputs`    | `String` (Stringified JSON) |                  | `[]`    |
-| `clientIdentifier` | `String`            |                    | `null`  |
-| `buttonId`   | `String`                  |                    | `null`  |
-| `buttonData` | `String`                  |                    | `null`  |
-| `type`       | `String` - `buy` or `tip` |                    | `buy`   |
+| Prop         | Type                      | Default |
+|--------------|---------------------------|---------|
+| `to`         | `String`                  | `null`  |
+| `amount`     | `String` or `Number`      | `null`  |
+| `currency`   | `String`                  | `'USD'` |
+| `label`      | `String`                  | `null`  |
+| `hideAmount` | `Boolean`                 | `false` |
+| `opReturn`   | `String`                  | `null`  |
+| `outputs`    | `Array`                   | `[]`    |
+| `clientIdentifier` | `String`            | `null`  |
+| `buttonId`   | `String` or `Number`      | `null`  |
+| `buttonData` | `String` or `Number`      | `null`  |
+| `type`       | `String` - `buy` or `tip` | `'buy'` |
+
+An array of `outputs` can be set **instead of the `to`, `amount` and `currency` properties**. Each output output object has the following parameters:
+
+| Name         | Type                      | Required           |
+|--------------|---------------------------|--------------------|
+| `address`    | `String`                  |                    |
+| `userId`     | `String` or `Number`      |                    |
+| `script`     | `String`                  |                    |
+| `amount`     | `String`                  | :heavy_check_mark: |
+| `currency`   | `String`                  | :heavy_check_mark: |
+
 
 ## Events
 

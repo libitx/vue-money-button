@@ -2,10 +2,9 @@
   <div>
     <MoneyButton
       to="74"
-      amount="1"
+      amount="0.5"
       currency="USD"
-      label="$1 Tip me"
-      type="tip"
+      label="Send Libby some loot"
       @payment="handlePayment"
     />
   </div>
