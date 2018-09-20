@@ -7,8 +7,8 @@
       :buttons="hint.buttons"
       @close="hint = null"
     />
-    <iframe :src="url" class="button-frame" :style="size" scrolling="no" v-message-handler />
-    <Spinner />
+    <iframe :src="url" class="button-frame" :style="size" scrolling="no" v-message-handler @load="loaded" />
+    <Spinner v-show="loading" />
   </div>
 </template>
 
@@ -30,19 +30,26 @@ export default {
     opReturn:         { type: String },
     dataOutputs:      { type: String, default: '[]' },
     clientIdentifier: { type: String },
-    buttonId:         { type: String },
-    buttonDate:       { type: String },
+    buttonId:         { required: false },
+    buttonData:       { required: false },
     type:             { type: String, default: 'buy' },
   },
 
   data() {
     return {
       hint: null,
+      loading: true,
       size: {
         width: '280px',
         height: '50px'
       }
       
+    }
+  },
+
+  watch: {
+    url(val) {
+      this.loading = true;
     }
   },
 
@@ -69,6 +76,10 @@ export default {
   },
 
   methods: {
+    loaded(e) {
+      setTimeout(() => { this.loading = false }, 2000)
+    },
+
     handleError(error) {
       switch(error) {
         case 'insufficient balance':

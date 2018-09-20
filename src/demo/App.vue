@@ -33,12 +33,13 @@
       <MoneyButton
         to="74"
         :amount="amount"
-        :label="tipLabel"
-        type="tip"
+        :label="label"
 
         @payment="onPayment"
         @error="onError"
       />
+
+      <pre class="ph4 pv3 code f6 fw7 lh-copy bg-light-gray dark-pink" v-show="payment">{{ payment }}</pre>
 
       <p class="mv3 f6 lh-copy mid-gray"><em>Disclaimer: This is a real Money Button. Sliding it will send me money.</em></p>
     </div>
@@ -62,7 +63,7 @@
         <li><a href="https://docs.moneybutton.com/" class="link blue hover-red">Money Button docs</a></li>
       </ul>
 
-      <h3 class="mt4 mb2 f4 lh-title">Find out more</h3>
+      <h3 class="mt4 mb2 f4 lh-title">License</h3>
 
       <p class="mv0 f5 lh-copy">vue-money-button is open source and released under the <a href="https://github.com/libitx/vue-money-button/blob/master/license.md" class="link blue hover-red">MIT License</a>.</p>
       <p class="mv0 f5 lh-copy">Copyright &copy; 2018 libitx</p>
@@ -78,7 +79,8 @@ export default {
   data() {
     return {
       amount: '0.50',
-      label: 'Tip Libby'
+      label: 'Send Libby some loot',
+      payment: null
     }
   },
 
@@ -94,6 +96,7 @@ export default {
   methods: {
     onPayment(payment) {
       console.log('onPayment event:', payment)
+      this.payment = payment;
     },
     onError(error) {
       console.log('onError event:', error)

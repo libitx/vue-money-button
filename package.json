@@ -1,6 +1,6 @@
 {
   "name": "vue-money-button",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An unofficial Vue.js component for the Money Button.",
   "main": "dist/vue-money-button.js",
   "scripts": {
