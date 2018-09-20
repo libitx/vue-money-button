@@ -61,7 +61,7 @@ export default {
       return {
         to:   this.to,
         amt:  this.amount,
-        ccy:  this.currency,
+        ccy:  this.outputs.length ? undefined : this.currency,
         lbl:  this.label,
         hamt: this.hideAmount,
         opd:  this.opReturn,
