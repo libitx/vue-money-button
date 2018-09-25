@@ -32,7 +32,8 @@ export default {
     clientIdentifier: String,
     buttonId:         true,
     buttonData:       true,
-    type:             { type: String, default: 'buy' }
+    type:             { type: String, default: 'buy' },
+    devMode:          Boolean
   },
 
   data() {
@@ -69,7 +70,8 @@ export default {
         cid:  this.clientIdentifier,
         bid:  this.buttonId,
         bdt:  this.buttonData,
-        t:    this.type
+        t:    this.type,
+        dev:  this.devMode
       }
     },
   },
@@ -84,15 +86,15 @@ export default {
         case 'insufficient balance':
           return this.hint = {
             title: 'Low balance',
-            text: 'You do not have enough money.',
+            text: 'Your balance is too low to make this payment.',
             buttons: [
               { url: this.$options.domain.concat('/wallet'), text: 'Add Money', class: 'red' }
             ]
           };
         case 'not logged in':
           return this.hint = {
-            title: 'Login',
-            text: 'Please login.',
+            title: 'Money Button',
+            text: 'We believe in sound digital money for everyone in the world. Join Money Button to make this payment.',
             buttons: [
               { url: this.$options.domain.concat('/login'), text: 'Log in', class: 'red' },
               { url: this.$options.domain.concat('/register'), text: 'Register', class: 'nofill' }
