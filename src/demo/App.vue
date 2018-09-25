@@ -34,6 +34,7 @@
         to="74"
         :amount="amount"
         :label="label"
+        type="tip"
 
         @payment="onPayment"
         @error="onError"
@@ -79,7 +80,7 @@ export default {
   data() {
     return {
       amount: '0.50',
-      label: 'Send Libby some loot',
+      label: 'Send some loot',
       payment: null
     }
   },

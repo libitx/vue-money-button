@@ -23,7 +23,7 @@ npm install vue-money-button --save
       to="74"
       amount="0.5"
       currency="USD"
-      label="Send Libby some loot"
+      label="Send some loot"
       @payment="handlePayment"
     />
   </div>
@@ -50,19 +50,20 @@ export default {
 
 The following properties can be set on the component:
 
-| Prop         | Type                      | Default |
-|--------------|---------------------------|---------|
-| `to`         | `String`                  | `null`  |
-| `amount`     | `String` or `Number`      | `null`  |
-| `currency`   | `String`                  | `'USD'` |
-| `label`      | `String`                  | `null`  |
-| `hideAmount` | `Boolean`                 | `false` |
-| `opReturn`   | `String`                  | `null`  |
-| `outputs`    | `Array`                   | `[]`    |
-| `clientIdentifier` | `String`            | `null`  |
-| `buttonId`   | `String` or `Number`      | `null`  |
-| `buttonData` | `String` or `Number`      | `null`  |
-| `type`       | `String` - `buy` or `tip` | `'buy'` |
+| Prop          | Type                      | Default |
+|---------------|---------------------------|---------|
+| `to`          | `String`                  | `null`  |
+| `amount`      | `String` or `Number`      | `null`  |
+| `currency`    | `String`                  | `'USD'` |
+| `label`       | `String`                  | `null`  |
+| `hideAmount`  | `Boolean`                 | `false` |
+| `opReturn`    | `String`                  | `null`  |
+| `outputs`     | `Array`                   | `[]`    |
+| `clientIdentifier` | `String`             | `null`  |
+| `buttonId`    | `String` or `Number`      | `null`  |
+| `buttonData`  | `String` or `Number`      | `null`  |
+| `type`        | `String` - `buy` or `tip` | `'buy'` |
+| `devMode`     | `Boolean`                 | `false` |
 
 An array of `outputs` can be set **instead of the `to`, `amount` and `currency` properties**. Each output output object has the following parameters:
 

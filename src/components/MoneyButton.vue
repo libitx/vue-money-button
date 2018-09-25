@@ -26,14 +26,14 @@ export default {
     amount:           [String, Number],
     currency:         { type: String, default: 'USD' },
     label:            { type: String, required: true },
-    hideAmount:       { type: Boolean, default: false },
+    hideAmount:       { type: Boolean, default: undefined },
     opReturn:         String,
     outputs:          { type: Array, default: () => [] },
     clientIdentifier: String,
     buttonId:         true,
     buttonData:       true,
     type:             { type: String, default: 'buy' },
-    devMode:          Boolean
+    devMode:          { type: Boolean, default: undefined }
   },
 
   data() {
