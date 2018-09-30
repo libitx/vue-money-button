@@ -96,9 +96,9 @@ export default {
 
     handleMessage(e) {
       if ( this.$refs['iframe'] && e.source === this.$refs['iframe'].contentWindow ) {
-        // If the event somehow comes from a diferent place than the official
-        // MoneyButton domain, then perhaps the user is trying to hack the app and
-        // make it think a payment occurred when it actually did not. Ignore.
+        const { error, size, payment, message } = e.data;
+
+        // Check valid iframe origin
         if ( e.origin !== config.iframeOrigin) {
           console.log(`vue-money-button: postMessage: wrong origin: ${e.origin} should be ${config.iframeOrigin}`);
           return
@@ -106,8 +106,6 @@ export default {
 
         if (process.env.NODE_ENV === 'development')
           console.log('vue-money-button: Received message', e.data);
-
-        const { error, size, payment, message } = e.data;
 
         // If error
         if ( error ) {
