@@ -1,13 +1,13 @@
 <template>
-  <div class="spinner">
-    <div class="bounce1"></div>
-    <div class="bounce2"></div>
-    <div class="bounce3"></div>
+  <div class="spinner__moneybutton">
+    <div class="bounce__moneybutton bounce-1"></div>
+    <div class="bounce__moneybutton bounce-2"></div>
+    <div class="bounce__moneybutton bounce-3"></div>
   </div>
 </template>
 
-<style scoped>
-.spinner {
+<style>
+.spinner__moneybutton {
   position: absolute;
   top: 50%;
   left: 50px;
@@ -15,7 +15,7 @@
   margin-top: -11px;
 }
 
-.spinner > div {
+.bounce__moneybutton {
   width: 18px;
   height: 18px;
   background-color: #333;
@@ -26,19 +26,19 @@
   animation: sk-bouncedelay 1.4s infinite ease-in-out both;
 }
 
-.spinner .bounce1 {
+.bounce__moneybutton.bounce-1 {
   background-color: #FF4136;
   -webkit-animation-delay: -0.32s;
   animation-delay: -0.32s;
 }
 
-.spinner .bounce2 {
+.bounce__moneybutton.bounce-2 {
   background-color: #357EDD;
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
 }
 
-.spinner .bounce3 {
+.bounce__moneybutton.bounce-3 {
   background-color: #191927;
 }
 

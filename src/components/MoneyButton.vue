@@ -1,5 +1,5 @@
 <template>
-  <div class="button-wrap" :style="size">
+  <div class="wrap__moneybutton" :style="size">
     <Popover
       v-if="hint"
       :title="hint.title"
@@ -7,20 +7,25 @@
       :buttons="hint.buttons"
       @close="hint = null"
     />
-    <iframe :src="url" class="button-frame" :style="size" scrolling="no" v-message-handler @load="loaded" />
-    <Spinner v-show="loading" />
+    <iframe
+      class="frame__moneybutton"
+      scrolling="no"
+      ref="iframe"
+      :style="size"
+      :src="iframeSrc"
+      @load="loaded"
+    />
+    <LoaderIcon v-show="loading" />
   </div>
 </template>
 
 <script>
 import qs from 'qs'
+import config from 'config'
 import Popover from 'components/Popover.vue'
-import Spinner from 'components/Spinner.vue'
-import messageHandler from 'directives/message-handler'
+import LoaderIcon from 'components/Loader.vue'
 
 export default {
-  domain: 'https://www.moneybutton.com',
-
   props: {
     to:               [String, Number],
     amount:           [String, Number],
@@ -47,15 +52,23 @@ export default {
     }
   },
 
+  mounted() {
+    window.addEventListener('message', this.handleMessage, false);
+  },
+
+  destroyed() {
+    window.removeEventListener('message', this.handleMessage, false);
+  },
+
   watch: {
-    url(val) {
+    iframeSrc(val) {
       this.loading = true;
     }
   },
 
   computed: {
-    url() {
-      return this.$options.domain.concat('/iframe/v2?', qs.stringify(this.queryParams));
+    iframeSrc() {
+      return config.iframeUrl.concat('?', qs.stringify(this.queryParams));
     },
 
     queryParams() {
@@ -81,58 +94,52 @@ export default {
       setTimeout(() => { this.loading = false }, 2000)
     },
 
-    handleError(error) {
-      switch(error) {
-        case 'insufficient balance':
-          return this.hint = {
-            title: 'Low balance',
-            text: 'Your balance is too low to make this payment.',
-            buttons: [
-              { url: this.$options.domain.concat('/wallet'), text: 'Add Money', class: 'red' }
-            ]
-          };
-        case 'not logged in':
-          return this.hint = {
-            title: 'Money Button',
-            text: 'We believe in sound digital money for everyone in the world. Join Money Button to make this payment.',
-            buttons: [
-              { url: this.$options.domain.concat('/login'), text: 'Log in', class: 'red' },
-              { url: this.$options.domain.concat('/register'), text: 'Register', class: 'nofill' }
-            ]
-          };
-        default:
-          return this.hint = {
-            title: 'Unknown Error',
-            text: error
-          };
-      }
-    },
+    handleMessage(e) {
+      if ( this.$refs['iframe'] && e.source === this.$refs['iframe'].contentWindow ) {
+        // If the event somehow comes from a diferent place than the official
+        // MoneyButton domain, then perhaps the user is trying to hack the app and
+        // make it think a payment occurred when it actually did not. Ignore.
+        if ( e.origin !== config.iframeOrigin) {
+          console.log(`vue-money-button: postMessage: wrong origin: ${e.origin} should be ${config.iframeOrigin}`);
+          return
+        }
 
-    resize({ width, height }) {
-      this.size.width = width;
-      this.size.height = height;
+        if (process.env.NODE_ENV === 'development')
+          console.log('vue-money-button: Received message', e.data);
+
+        const { error, size, payment, message } = e.data;
+
+        // If error
+        if ( error ) {
+          this.hint = config.getHintForError(error, message)
+          this.$emit('error', error)
+
+        // If resize
+        } else if ( size ) {
+          this.size = size;
+
+        // If payment
+        } else if ( payment ) {
+          this.$emit('payment', payment)
+        }
+      }
     }
   },
 
   components: {
     Popover,
-    Spinner
-  },
-
-  directives: {
-    messageHandler
+    LoaderIcon
   }
-
 }
 </script>
 
-<style scoped>
-.button-wrap {
+<style>
+.wrap__moneybutton {
   position: relative;
   display: inline-block;
 }
 
-.button-frame {
+.frame__moneybutton {
   position: relative;
   z-index: 1;
   border: none;
