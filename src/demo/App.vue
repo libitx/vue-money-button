@@ -3,7 +3,7 @@
     <div class="ph4">
       <h1 class="mt0 mb3 f2 lh-title">Vue.js Money Button Component Demo</h1>
 
-      <p class="mv3 f5 lh-copy">An unofficial Vue.js component for the Money Button. This library allows Money Button to be used in Vue.js projects and benefit from reactive properties.</p>
+      <p class="mv3 f5 lh-copy">An unofficial Vue.js component that lets you integrate <a href="https://www.moneybutton.com/" class="link blue hover-red">Money Button</a>'s payment system into your app or web page. Developed independently, but closely mirrors the conventions established in the offical <a href="https://github.com/moneybutton/react-money-button" class="link blue hover-red">React component</a>.</p>
 
       <h3 class="mt4 mb2 f4 lh-title">Demo</h3>
 

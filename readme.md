@@ -2,7 +2,7 @@
 
 > An unofficial Vue.js component for the Money Button.
 
-The official [Money Button](https://www.moneybutton.com/) `moneybutton.js` script is only suitable for basic usage on static web pages. This library allows Money Button to be used in Vue.js projects and benefit from reactive properties.
+A Vue.js component that lets you integrate [Money Button](https://www.moneybutton.com/)'s payment system into your app or web page. Developed independently, but closely mirrors the conventions established in the offical [React component](https://github.com/moneybutton/react-money-button).
 
 ## Demo
 
@@ -10,8 +10,10 @@ https://libitx.github.io/vue-money-button/
 
 ## Installation
 
-```console
+```sh
 npm install vue-money-button --save
+# or
+yarn add vue-money-button
 ```
 
 ## Usage
@@ -20,7 +22,7 @@ npm install vue-money-button --save
 <template>
   <div>
     <MoneyButton
-      to="74"
+      to="YOUR BITCOIN ADDRESS"
       amount="0.5"
       currency="USD"
       label="Send some loot"
