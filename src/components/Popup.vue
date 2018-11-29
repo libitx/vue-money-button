@@ -5,17 +5,24 @@
     <div class="hint__moneybutton" >
       <div class="content__moneybutton">
         <span class="title__moneybutton">{{ title }}</span>
-        <span class="text__moneybutton">{{ text }}</span>
+        <span class="text__moneybutton">{{ message }}</span>
         <div class="close__moneybutton" />
         <div class="buttonsWrapper__moneybutton">
-          <a v-for="btn in buttons"
-            :href="btn.url"
-            target="_blank"
+
+          <a v-if="buttonText"
+            :href="buttonUrl"
+            target="_blank" 
             rel="noopener noreferrer"
-            class="button__moneybutton"
-            :class="btn.class">
-              {{ btn.text }}
-          </a>
+            class="button__moneybutton red__moneybutton"
+          >{{ buttonText }}</a>
+
+          <a v-if="button2Text"
+            :href="button2Url"
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="button__moneybutton nofill__moneybutton"
+          >{{ button2Text }}</a>
+          
         </div>
       </div>
     </div>
@@ -25,9 +32,12 @@
 <script>
 export default {
   props: {
-    title:    { type: String, required: true },
-    text:     { type: String, required: true },
-    buttons:  { type: Array }
+    title:        { type: String, required: true },
+    message:      { type: String, required: true },
+    buttonText:   { type: String },
+    buttonUrl:    { type: String },
+    button2Text:  { type: String },
+    button2Url:   { type: String }
   }
 }
 </script>

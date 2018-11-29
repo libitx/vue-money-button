@@ -1,11 +1,14 @@
 <template>
   <div class="wrap__moneybutton" :style="size">
-    <Popover
-      v-if="hint"
-      :title="hint.title"
-      :text="hint.text"
-      :buttons="hint.buttons"
-      @close="hint = null"
+    <Popup
+      v-if="popup"
+      :title="popup.title"
+      :message="popup.message"
+      :button-text="popup.buttonText"
+      :button-url="popup.buttonUrl"
+      :button2-text="popup.buttonText2"
+      :button2-url="popup.buttonUrl2"
+      @close="popup = null"
     />
     <iframe
       class="frame__moneybutton"
@@ -22,7 +25,7 @@
 <script>
 import qs from 'qs'
 import config from 'config'
-import Popover from 'components/Popover.vue'
+import Popup from 'components/Popup.vue'
 import LoaderIcon from 'components/Loader.vue'
 
 export default {
@@ -42,7 +45,7 @@ export default {
 
   data() {
     return {
-      hint: null,
+      popup: null,
       loading: true,
       size: {
         width: '280px',
@@ -94,7 +97,7 @@ export default {
 
     handleMessage(e) {
       if ( this.$refs['iframe'] && e.source === this.$refs['iframe'].contentWindow ) {
-        const { error, size, payment, message } = e.data;
+        const { error, size, payment, popup } = e.data;
 
         // Check valid iframe origin
         if ( e.origin !== config.iframeOrigin) {
@@ -105,9 +108,12 @@ export default {
         if (process.env.NODE_ENV === 'development')
           console.log('vue-money-button: Received message', e.data);
 
+        // If popup
+        if ( popup ) {
+          this.popup = popup;
+
         // If error
-        if ( error ) {
-          this.hint = config.getHintForError(error, message)
+        } else if ( error ) {
           this.$emit('error', new Error(error))
 
         // If resize
@@ -123,7 +129,7 @@ export default {
   },
 
   components: {
-    Popover,
+    Popup,
     LoaderIcon
   }
 }
