@@ -13,8 +13,8 @@ describe('MoneyButton', () => {
   describe('data defaults', () => {
     const data = subject.data()
 
-    it('must nave no hint object', () => {
-      expect( data.hint ).toBe(null)
+    it('must nave no popup object', () => {
+      expect( data.popup ).toBe(null)
     })
 
     it('must have default size', () => {
