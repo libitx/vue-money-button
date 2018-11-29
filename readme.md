@@ -56,7 +56,6 @@ The following properties can be set on the component:
 | `amount`      | `String` or `Number`      | `null`  |
 | `currency`    | `String`                  | `'USD'` |
 | `label`       | `String`                  | `null`  |
-| `hideAmount`  | `Boolean`                 | `false` |
 | `opReturn`    | `String`                  | `null`  |
 | `outputs`     | `Array`                   | `[]`    |
 | `clientIdentifier` | `String`             | `null`  |
