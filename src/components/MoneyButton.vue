@@ -108,7 +108,7 @@ export default {
         // If error
         if ( error ) {
           this.hint = config.getHintForError(error, message)
-          this.$emit('error', error)
+          this.$emit('error', new Error(error))
 
         // If resize
         } else if ( size ) {

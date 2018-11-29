@@ -33,6 +33,8 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,700');
+
 .hint__moneybutton {
   min-width: 254px;
   position: relative;
@@ -72,6 +74,7 @@ export default {
   box-sizing: border-box;
   min-width: 260px;
   max-width: 350px;
+  font-family: 'IBM Plex Sans', sans-serif;
 }
 .hint__moneybutton .title__moneybutton {
   font-size: 20px;
