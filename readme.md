@@ -56,6 +56,7 @@ The following properties can be set on the component:
 |---------------|---------------------------|---------|
 | `to`          | `String`                  | `null`  |
 | `amount`      | `String` or `Number`      | `null`  |
+| `editable`    | `Boolean`                 | `false` |
 | `currency`    | `String`                  | `'USD'` |
 | `label`       | `String`                  | `null`  |
 | `opReturn`    | `String`                  | `null`  |

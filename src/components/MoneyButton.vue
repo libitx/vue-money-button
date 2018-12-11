@@ -32,6 +32,7 @@ export default {
   props: {
     to:               [String, Number],
     amount:           [String, Number],
+    editable:         { type: Boolean, default: undefined },
     currency:         { type: String, default: 'USD' },
     label:            { type: String, required: true },
     opReturn:         String,
@@ -77,6 +78,7 @@ export default {
       return {
         to:   this.to,
         amt:  this.amount,
+        edt:  this.editable,
         ccy:  this.outputs.length ? undefined : this.currency,
         lbl:  this.label,
         opd:  this.opReturn,
