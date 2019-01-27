@@ -34,7 +34,7 @@
         to="74"
         :amount="amount"
         :label="label"
-        type="tip"
+        success-message="Yehah!"
 
         @payment="onPayment"
         @error="onError"

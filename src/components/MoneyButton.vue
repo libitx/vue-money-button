@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import qs from 'qs'
 import config from 'config'
 import Popup from 'components/Popup.vue'
 import LoaderIcon from 'components/Loader.vue'
@@ -35,13 +34,15 @@ export default {
     editable:         { type: Boolean, default: undefined },
     currency:         { type: String, default: 'USD' },
     label:            { type: String, required: true },
+    successMessage:   String,
     opReturn:         String,
     outputs:          { type: Array, default: () => [] },
     clientIdentifier: String,
     buttonId:         true,
     buttonData:       true,
     type:             { type: String, default: 'buy' },
-    devMode:          { type: Boolean, default: undefined }
+    devMode:          { type: Boolean, default: undefined },
+    disabled:         { type: Boolean, default: undefined }
   },
 
   data() {
@@ -51,50 +52,56 @@ export default {
       size: {
         width: '280px',
         height: '50px'
-      }
+      },
+      iframeSrc: config.iframeUrl.concat('?', 'format=postmessage')
     }
   },
 
   mounted() {
-    window.addEventListener('message', this.handleMessage, false);
+    window.addEventListener('message', this.handleMessage, false)
   },
 
   destroyed() {
-    window.removeEventListener('message', this.handleMessage, false);
-  },
-
-  watch: {
-    iframeSrc(val) {
-      this.loading = true;
-    }
+    window.removeEventListener('message', this.handleMessage, false)
   },
 
   computed: {
-    iframeSrc() {
-      return config.iframeUrl.concat('?', qs.stringify(this.queryParams));
-    },
-
     queryParams() {
       return {
-        to:   this.to,
-        amt:  this.amount,
-        edt:  this.editable,
-        ccy:  this.outputs.length ? undefined : this.currency,
-        lbl:  this.label,
-        opd:  this.opReturn,
-        os:   this.outputs.length ? JSON.stringify(this.outputs) : undefined,
-        cid:  this.clientIdentifier,
-        bid:  this.buttonId,
-        bdt:  this.buttonData,
-        t:    this.type,
-        dev:  this.devMode
+        to:     this.to,
+        amt:    this.amount,
+        edt:    this.editable,
+        ccy:    this.outputs.length ? undefined : this.currency,
+        lbl:    this.label,
+        scsmsg: this.successMessage,
+        opd:    this.opReturn,
+        os:     this.outputs.length ? JSON.stringify(this.outputs) : undefined,
+        cid:    this.clientIdentifier,
+        bid:    this.buttonId,
+        bdt:    this.buttonData,
+        t:      this.type,
+        dev:    this.devMode,
+        dsbd:   this.disabled
       }
     },
   },
 
+  watch: {
+    queryParams(params) {
+      this.postMessage('attributes-updated', params)
+    }
+  },
+
   methods: {
     loaded(e) {
+      this.postMessage('attributes-updated', this.queryParams)
       setTimeout(() => { this.loading = false }, 2000)
+    },
+
+    postMessage(topic, payload) {
+      this.$refs.iframe.contentWindow.postMessage({
+        v1: { topic, payload }
+      }, config.iframeUrl)
     },
 
     handleMessage(e) {
@@ -103,12 +110,12 @@ export default {
 
         // Check valid iframe origin
         if ( e.origin !== config.iframeOrigin) {
-          console.log(`vue-money-button: postMessage: wrong origin: ${e.origin} should be ${config.iframeOrigin}`);
+          console.log(`vue-money-button: postMessage: wrong origin: ${e.origin} should be ${config.iframeOrigin}`)
           return
         }
 
         if (process.env.NODE_ENV === 'development')
-          console.log('vue-money-button: Received message', e.data);
+          console.log('vue-money-button: Received message', e.data)
 
         // If popup
         if ( popup ) {

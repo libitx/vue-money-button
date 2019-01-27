@@ -59,6 +59,7 @@ The following properties can be set on the component:
 | `editable`    | `Boolean`                 | `false` |
 | `currency`    | `String`                  | `'USD'` |
 | `label`       | `String`                  | `null`  |
+| `successMessage` | `String`               | `null`  |
 | `opReturn`    | `String`                  | `null`  |
 | `outputs`     | `Array`                   | `[]`    |
 | `clientIdentifier` | `String`             | `null`  |
@@ -66,6 +67,7 @@ The following properties can be set on the component:
 | `buttonData`  | `String` or `Number`      | `null`  |
 | `type`        | `String` - `buy` or `tip` | `'buy'` |
 | `devMode`     | `Boolean`                 | `false` |
+| `disabled`    | `Boolean`                 | `false` |
 
 An array of `outputs` can be set **instead of the `to`, `amount` and `currency` properties**. Each output output object has the following parameters:
 
