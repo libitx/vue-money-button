@@ -34,6 +34,7 @@
         to="74"
         :amount="amount"
         :label="label"
+        client-id="123"
         success-message="Yehah!"
 
         @payment="onPayment"

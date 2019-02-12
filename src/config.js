@@ -1,7 +1,3 @@
-const iframeOrigin  = 'https://www.moneybutton.com',
-      iframeUrl     = `${iframeOrigin}/iframe/v2`;
-
 export default {
-  iframeOrigin,
-  iframeUrl
+  moneyButtonScript: 'https://www.moneybutton.com/moneybutton.js'
 }
