@@ -1,3 +1,4 @@
 export default {
-  moneyButtonScript: 'https://www.moneybutton.com/moneybutton.js'
+  iframeOrigin:       'https://www.moneybutton.com',
+  moneyButtonScript:  'https://www.moneybutton.com/moneybutton.js'
 }
