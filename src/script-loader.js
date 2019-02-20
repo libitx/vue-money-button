@@ -6,7 +6,6 @@ export default {
 
   load() {
     if ( !this.promise ) {
-      console.log('init script')
       this.promise = new Promise((resolve, reject) => {
         const el = document.createElement('script');
         el.type = 'text/javascript';
@@ -20,7 +19,6 @@ export default {
       })
     }
 
-    console.log('returning promise')
     return this.promise;
   }
 }

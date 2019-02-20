@@ -68,8 +68,11 @@ export default {
   },
 
   watch: {
-    params(val) {
-      this.refreshMoneyButton()
+    params: {
+      deep: true,
+      handler(val) {
+        this.refreshMoneyButton()
+      }
     }
   },
 
