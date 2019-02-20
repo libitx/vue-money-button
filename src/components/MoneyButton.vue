@@ -49,7 +49,7 @@ export default {
         label:            this.label,
         successMessage:   this.successMessage,
         opReturn:         this.opReturn,
-        outputs:          this.outputs.length ? JSON.stringify(this.outputs) : undefined,
+        outputs:          this.outputs.length ? this.outputs : undefined,
         clientIdentifier: this.clientIdentifier,
         buttonId:         this.buttonId,
         buttonData:       this.buttonData,
