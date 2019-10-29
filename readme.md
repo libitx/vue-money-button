@@ -62,6 +62,7 @@ The following properties can be set on the component:
 | `successMessage` | `String`               | `null`  |
 | `opReturn`    | `String`                  | `null`  |
 | `outputs`     | `Array`                   | `[]`    |
+| `cryptoOperations` | `Array`              | `null`  |
 | `clientIdentifier` | `String`             | `null`  |
 | `buttonId`    | `String` or `Number`      | `null`  |
 | `buttonData`  | `String` or `Number`      | `null`  |
@@ -86,8 +87,10 @@ The component emits the following events:
 
 | Event     |                                   |
 |-----------|-----------------------------------|
+| `load`    | Triggered on load                 |
 | `payment` | Triggered on a successful payment |
 | `error`   | Triggered on a payment error      |
+| `cryptoOperations` | Callback returning the cryptoOperations object |
 
 ## License
 
