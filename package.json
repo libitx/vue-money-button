@@ -4,7 +4,8 @@
   "description": "An unofficial Vue.js component for the Money Button.",
   "homepage": "https://libitx.github.io/vue-money-button/",
   "repository": "github:libitx/vue-money-button",
-  "main": "dist/vue-money-button.js",
+  "main": "src/index.js",
+  "browser": "dist/vue-money-button.js",
   "scripts": {
     "build": "yarn run build:dist && yarn run build:demo",
     "build:demo": "NODE_ENV=production webpack --config ./config/dev.js --mode production",
