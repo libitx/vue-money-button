@@ -3,7 +3,6 @@
     <div ref="button" class="v-money-button-inner" />
     <Loader v-show="loading" />
   </div>
-  
 </template>
 
 <script>
@@ -56,6 +55,10 @@ export default {
         type:             this.type,
         devMode:          this.devMode,
         disabled:         this.disabled,
+        onLoad:           (...args) => {
+          this.loading = false;
+          this.$emit('payment', ...args)
+        },
         onPayment:        (...args) => { this.$emit('payment', ...args) },
         onError:          (...args) => { this.$emit('error', ...args) }
       }
@@ -86,7 +89,6 @@ export default {
     handleMessage(e) {
       if (e.origin === config.iframeOrigin) {
         if ( e.data.v1.topic === 'ready' ) {
-          setTimeout(_ => { this.loading = false; }, 1000)
           if (this.$refs.button) {
             this.size = {
               width:  this.$refs.button.offsetWidth + 'px',
