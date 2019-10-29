@@ -20,6 +20,7 @@ export default {
     successMessage:   String,
     opReturn:         String,
     outputs:          { type: Array, default: () => [] },
+    cryptoOperations: Array,
     clientIdentifier: String,
     buttonId:         true,
     buttonData:       true,
@@ -41,26 +42,28 @@ export default {
   computed: {
     params() {
       return {
-        to:               this.to,
-        amount:           this.amount,
-        editable:         this.editable,
-        currency:         this.outputs.length ? undefined : this.currency,
-        label:            this.label,
-        successMessage:   this.successMessage,
-        opReturn:         this.opReturn,
-        outputs:          this.outputs.length ? this.outputs : undefined,
-        clientIdentifier: this.clientIdentifier,
-        buttonId:         this.buttonId,
-        buttonData:       this.buttonData,
-        type:             this.type,
-        devMode:          this.devMode,
-        disabled:         this.disabled,
-        onLoad:           (...args) => {
+        to:                 this.to,
+        amount:             this.amount,
+        editable:           this.editable,
+        currency:           this.outputs.length ? undefined : this.currency,
+        label:              this.label,
+        successMessage:     this.successMessage,
+        opReturn:           this.opReturn,
+        outputs:            this.outputs.length ? this.outputs : undefined,
+        cryptoOperations:   this.cryptoOperations,
+        clientIdentifier:   this.clientIdentifier,
+        buttonId:           this.buttonId,
+        buttonData:         this.buttonData,
+        type:               this.type,
+        devMode:            this.devMode,
+        disabled:           this.disabled,
+        onLoad:             (...args) => {
           setTimeout(_ => this.loading = false, 1000)
           this.$emit('payment', ...args)
         },
-        onPayment:        (...args) => { this.$emit('payment', ...args) },
-        onError:          (...args) => { this.$emit('error', ...args) }
+        onPayment:          (...args) => { this.$emit('payment', ...args) },
+        onError:            (...args) => { this.$emit('error', ...args) },
+        onCryptoOperations: (...args) => { this.$emit('cryptoOperations', ...args) }
       }
     }
   },
@@ -105,7 +108,6 @@ export default {
   }
 }
 </script>
-
 
 <style>
 .v-money-button-outer {
