@@ -56,7 +56,7 @@ export default {
         devMode:          this.devMode,
         disabled:         this.disabled,
         onLoad:           (...args) => {
-          this.loading = false;
+          setTimeout(_ => this.loading = false, 1000)
           this.$emit('payment', ...args)
         },
         onPayment:        (...args) => { this.$emit('payment', ...args) },
