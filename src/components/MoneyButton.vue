@@ -59,7 +59,7 @@ export default {
         disabled:           this.disabled,
         onLoad:             (...args) => {
           setTimeout(_ => this.loading = false, 1000)
-          this.$emit('payment', ...args)
+          this.$emit('load', ...args)
         },
         onPayment:          (...args) => { this.$emit('payment', ...args) },
         onError:            (...args) => { this.$emit('error', ...args) },
