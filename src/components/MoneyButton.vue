@@ -45,7 +45,7 @@ export default {
         to:                 this.to,
         amount:             this.amount,
         editable:           this.editable,
-        currency:           this.outputs.length ? undefined : this.currency,
+        currency:           this.outputs.length || this.cryptoOperations.length ? undefined : this.currency,
         label:              this.label,
         successMessage:     this.successMessage,
         opReturn:           this.opReturn,
