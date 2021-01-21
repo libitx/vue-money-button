@@ -70,7 +70,7 @@ The following properties can be set on the component:
 | `devMode`     | `Boolean`                 | `false` |
 | `disabled`    | `Boolean`                 | `false` |
 
-An array of `outputs` can be set **instead of the `to`, `amount` and `currency` properties**. Each output output object has the following parameters:
+An array of `outputs` can be set **instead of the `to`, `amount` and `currency` properties**. Each output object has the following parameters:
 
 | Name         | Type                      | Required           |
 |--------------|---------------------------|--------------------|
