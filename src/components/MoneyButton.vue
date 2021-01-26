@@ -21,7 +21,7 @@ export default {
     outputs:          { type: Array, default: () => [] },
     cryptoOperations: Array,
     clientIdentifier: String,
-    buttonId:         String,
+    buttonId:         [String, Number],
     buttonData:       String,
     type:             { type: String, default: 'buy' },
     editable:         { type: Boolean, default: undefined },

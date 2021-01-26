@@ -12,15 +12,20 @@ https://libitx.github.io/vue-money-button/
 
 ## Upgrading from a previous version?
 
-Since version `1.0.0` the default export of the module has changed. Previously
-the default export was the Money Button component itself, for use in your own
-components. Now, the default export is a Vue plugin that when used installs
-adds the component globally AND attaches `this.$getMoneyButton()` to all your
-Vue instances, providing access to the `moneyButton` object and the Invisible
+**🚨 Breaking change 🚨**
+
+Since version `1.0.0` the default export of the package is now a Vue **plugin**.
+When installed, the plugin does two things:
+
+* Adds the Money Button component to Vue globally
+* Attaches a `$getMoneyButton()` function to all your Vue instances. This async
+function returns the `moneyButton` object and provides access to the Invisible
 Money Button API.
 
-Anyone upgrading from a version prior to `1.0.0` should re-read the installation
-instructions below.
+Prior to version `1.0.0`, the default export was a Vue **component** for use
+directly in your own components. If you don't want to add the Money Button
+component globally, and you don't need Invisible Money Button, you can still
+require the component as needed, using the named export. See examples below.
 
 ## Installation
 
@@ -40,9 +45,9 @@ Vue.use(VueMoneyButton)
 ```
 
 The above step is recommended but optional. It adds the component to Vue globally,
-and also attaches `this.$getMoneyButton()` to all your Vue instances.
-Alternatively you can skip the above step, and add Money Button to your
-components where required (although you don't get access to IMB this way).
+and also attaches `$getMoneyButton()` to all your Vue instances. Alternatively
+you can skip the above step, and add Money Button to your components where
+required (although you don't get access to IMB this way).
 
 ```vue
 <script>
@@ -113,7 +118,7 @@ The following properties can be set on the component:
 
 | Prop          | Type                      | Default |
 |---------------|---------------------------|---------|
-| `to`          | `String`                  | `null`  |
+| `to`          | `String` or `Number`      | `null`  |
 | `amount`      | `String` or `Number`      | `null`  |
 | `currency`    | `String`                  | `'USD'` |
 | `label`       | `String`                  | `null`  |
@@ -123,7 +128,7 @@ The following properties can be set on the component:
 | `cryptoOperations` | `Array`              | `null`  |
 | `clientIdentifier` | `String`             | `null`  |
 | `buttonId`    | `String` or `Number`      | `null`  |
-| `buttonData`  | `String` or `Number`      | `null`  |
+| `buttonData`  | `String`                  | `null`  |
 | `type`        | `String` - `buy` or `tip` | `'buy'` |
 | `editable`    | `Boolean`                 | `false` |
 | `disabled`    | `Boolean`                 | `false` |
