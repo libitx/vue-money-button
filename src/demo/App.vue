@@ -48,13 +48,28 @@
 
     <h3 class="mt4 mb2 ph4 f4 lh-title">Installation</h3>
 
+    <p class="mv3 ph4 f5 lh-copy">Install with npm or yarn:</p>
+
     <pre class="ph4 pv3 code f6 lh-copy bg-dark-gray washed-yellow ws-normal"><code>
-      npm install vue-money-button --save
+      yarn add vue-money-button
     </code></pre>
+
+    <p class="mv3 ph4 f5 lh-copy">Install the plugin in your Vue app's entrypoint:</p>
+
+    <pre class="ph4 pv3 code f6 lh-copy bg-dark-gray washed-yellow"><code>import Vue from 'vue'
+import VueMoneyButton from 'vue-money-button'
+
+Vue.use(VueMoneyButton)</code></pre>
 
     <h3 class="mt4 mb2 ph4 f4 lh-title">Usage</h3>
 
-    <pre class="ph4 pv3 code f6 lh-copy bg-dark-gray washed-yellow"><code>{{ usageExample }}</code></pre>
+    <p class="mv3 ph4 f5 lh-copy">Using the Money Button component:</p>
+
+    <pre class="ph4 pv3 code f6 lh-copy bg-dark-gray washed-yellow"><code>{{ usageExample1 }}</code></pre>
+
+    <p class="mv3 ph4 f5 lh-copy">Using Invisible Money Button:</p>
+
+    <pre class="ph4 pv3 code f6 lh-copy bg-dark-gray washed-yellow"><code>{{ usageExample2 }}</code></pre>
 
     <div class="ph4">
       <h3 class="mt4 mb2 f4 lh-title">Find out more</h3>
@@ -74,7 +89,8 @@
 </template>
 
 <script>
-import usage from 'demo/usage.txt'
+import usage1 from 'demo/usage.component.txt'
+import usage2 from 'demo/usage.imb.txt'
 
 export default {
   data() {
@@ -89,8 +105,11 @@ export default {
     tipLabel() {
       return `$${ this.amount } ${ this.label }`;
     },
-    usageExample() {
-      return usage;
+    usageExample1() {
+      return usage1;
+    },
+    usageExample2() {
+      return usage2;
     }
   },
 

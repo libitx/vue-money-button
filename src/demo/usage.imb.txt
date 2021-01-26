@@ -1,0 +1,18 @@
+<template>
+  <div>
+    <a @click="likePost">Like!</a>
+  </div>
+</template>
+
+<script>
+export default {
+  methods: {
+    async likePost() {
+      const { IMB } = await this.$getMoneyButton()
+      const button = IMB(imgConfig)
+
+      button.swipe(likeParams)
+    }
+  }
+}
+</script>
