@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import MoneyButton from 'vue-money-button'
+import { MoneyButton } from 'vue-money-button'
 
 export default {
   components: {

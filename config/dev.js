@@ -1,11 +1,11 @@
 const webpack = require('webpack')
-const merge   = require('deep-assign')
+const mergeOptions = require('merge-options')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const opts    = require('./options')
 const base    = require('./webpack.config.js')
 
-const config = merge(base, {
+const config = mergeOptions(base, {
   entry: opts.paths.resolve('src/demo/index.js'),
 
   output: {
@@ -19,9 +19,5 @@ config.plugins = config.plugins.concat([
     template: opts.paths.resolve('src/demo/index.html')
   })
 ])
-
-if (process.env.NODE_ENV === 'development') {
-  config.devtool = '#eval-source-map';
-}
 
 module.exports = config

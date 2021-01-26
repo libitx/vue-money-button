@@ -14,7 +14,6 @@ export default {
   props: {
     to:               [String, Number],
     amount:           [String, Number],
-    editable:         { type: Boolean, default: undefined },
     currency:         { type: String, default: 'USD' },
     label:            { type: String, required: true },
     successMessage:   String,
@@ -25,8 +24,10 @@ export default {
     buttonId:         true,
     buttonData:       true,
     type:             { type: String, default: 'buy' },
+    editable:         { type: Boolean, default: undefined },
+    disabled:         { type: Boolean, default: undefined },
     devMode:          { type: Boolean, default: undefined },
-    disabled:         { type: Boolean, default: undefined }
+    preserveOrder:    { type: Boolean, default: undefined }
   },
 
   data() {
@@ -44,7 +45,6 @@ export default {
       return {
         to:                 this.to,
         amount:             this.amount,
-        editable:           this.editable,
         currency:           this.outputs.length || (this.cryptoOperations && this.cryptoOperations.length) ? undefined : this.currency,
         label:              this.label,
         successMessage:     this.successMessage,
@@ -55,15 +55,17 @@ export default {
         buttonId:           this.buttonId,
         buttonData:         this.buttonData,
         type:               this.type,
-        devMode:            this.devMode,
-        disabled:           this.disabled,
         onLoad:             (...args) => {
           setTimeout(_ => this.loading = false, 1000)
           this.$emit('load', ...args)
         },
         onPayment:          (...args) => { this.$emit('payment', ...args) },
         onError:            (...args) => { this.$emit('error', ...args) },
-        onCryptoOperations: (...args) => { this.$emit('cryptoOperations', ...args) }
+        onCryptoOperations: (...args) => { this.$emit('cryptoOperations', ...args) },
+        editable:           this.editable,
+        disabled:           this.disabled,
+        devMode:            this.devMode,
+        preserveOrder:      this.preserveOrder
       }
     }
   },

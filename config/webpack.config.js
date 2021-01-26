@@ -1,6 +1,6 @@
 const webpack         = require('webpack')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const UglifyJsPlugin  = require('uglifyjs-webpack-plugin')
+const TerserPlugin    = require('terser-webpack-plugin')
 
 const opts  = require('./options')
 const babel = require('./loaders/babel')
@@ -24,6 +24,11 @@ const config = {
       'node_modules'
     ],
     extensions: ['.js', '.vue']
+  },
+
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
   },
 
   plugins: [

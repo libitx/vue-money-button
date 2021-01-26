@@ -1,12 +1,12 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'production'
 
 const webpack = require('webpack')
-const merge   = require('deep-assign')
+const mergeOptions = require('dmerge-options')
 
 const opts = require('./options')
 const base = require('./webpack.config.js')
 
-const config = merge(base, {
+const config = mergeOptions(base, {
   entry: opts.paths.src,
 
   output: {
