@@ -27,7 +27,6 @@
     "rimraf": "^3.0",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.1.1",
-    "uglifyjs-webpack-plugin": "^2.2",
     "vue": "^2.6",
     "vue-loader": "^15.9",
     "vue-template-compiler": "^2.6",
@@ -36,6 +35,6 @@
     "webpack-dev-server": "^3.11.2"
   },
   "peerDependencies": {
-    "vue": "2.x"
+    "vue": "2.x || 3.x"
   }
 }
