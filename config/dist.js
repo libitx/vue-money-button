@@ -1,7 +1,7 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'production'
 
 const webpack = require('webpack')
-const mergeOptions = require('dmerge-options')
+const mergeOptions = require('merge-options')
 
 const opts = require('./options')
 const base = require('./webpack.config.js')
