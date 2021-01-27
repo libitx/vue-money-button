@@ -162,6 +162,6 @@ The component emits the following events:
 
 ## License
 
-vue-money-button is open source and released under the [MIT License](license.md).
+vue-money-button is open source and released under the [Apache-2 License](https://github.com/libitx/vue-money-button/blob/master/LICENSE).
 
 Copyright (c) 2018-2021 libitx.

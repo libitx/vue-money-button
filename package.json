@@ -2,6 +2,8 @@
   "name": "vue-money-button",
   "version": "0.3.4",
   "description": "An unofficial Vue.js component for the Money Button.",
+  "author": "libitx",
+  "license": "Apache-2.0",
   "homepage": "https://libitx.github.io/vue-money-button/",
   "repository": "github:libitx/vue-money-button",
   "main": "dist/vue-money-button.js",
@@ -14,7 +16,6 @@
     "release:demo": "git subtree push --prefix demo origin gh-pages",
     "test": "karma start config/karma.config.js"
   },
-  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.12",
     "@babel/preset-env": "^7.12",
