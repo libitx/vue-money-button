@@ -1,14 +1,15 @@
 # vue-money-button
 
-> An unofficial Vue.js component for the Money Button.
+![vue-money-button](https://github.com/libitx/vue-money-button/raw/master/media/poster.jpg)
 
-A Vue.js component that lets you integrate [Money Button](https://www.moneybutton.com/)'s
-payment system into your app or web page. Developed independently, but closely
-mirrors the conventions established in the offical [React component](https://github.com/moneybutton/react-money-button).
+![npm](https://img.shields.io/npm/v/vue-money-button?color=informational)
+![License](https://img.shields.io/github/license/libitx/vue-money-button?color=informational)
 
-## Demo
+A Vue.js component that lets you integrate [Money Button](https://www.moneybutton.com/)
+into your app or web page. Developed independently, but closely mirrors the
+conventions established in the offical [React component](https://github.com/moneybutton/react-money-button).
 
-https://libitx.github.io/vue-money-button/
+* [Demo](https://libitx.github.io/vue-money-button/)
 
 ## Upgrading from a previous version?
 
