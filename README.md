@@ -1,6 +1,6 @@
 # vue-money-button
 
-![vue-money-button](https://github.com/libitx/vue-money-button/raw/master/media/poster.jpg)
+![vue-money-button](https://github.com/libitx/vue-money-button/raw/master/media/poster.png)
 
 ![npm](https://img.shields.io/npm/v/vue-money-button?color=informational)
 ![License](https://img.shields.io/github/license/libitx/vue-money-button?color=informational)
