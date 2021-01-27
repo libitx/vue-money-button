@@ -82,7 +82,7 @@ Vue.use(VueMoneyButton)</code></pre>
 
       <h3 class="mt4 mb2 f4 lh-title">License</h3>
 
-      <p class="mv0 f5 lh-copy">vue-money-button is open source and released under the <a href="https://github.com/libitx/vue-money-button/blob/master/license.md" class="link blue hover-red">MIT License</a>.</p>
+      <p class="mv0 f5 lh-copy">vue-money-button is open source and released under the <a href="https://github.com/libitx/vue-money-button/blob/master/LICENSE" class="link blue hover-red">Apache-2.0</a>.</p>
       <p class="mv0 f5 lh-copy">Copyright &copy; 2018-2021 libitx</p>
     </div>
   </div>
